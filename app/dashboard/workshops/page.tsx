@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { AppShell } from "@/components/app-shell"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useState } from "react";
+import { AppShell } from "@/components/app-shell";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   CalendarDays,
   Clock,
@@ -15,33 +15,33 @@ import {
   CalendarPlus,
   CheckCircle2,
   User,
-} from "lucide-react"
-import { cn } from "@/lib/utils"
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const workshops = [
   {
     id: 1,
-    title: "Mindful Leadership Workshop",
+    title: "Running Conference",
     description:
-      "Learn mindfulness techniques to become a more present and effective leader. Includes guided exercises and group discussions.",
-    date: "Feb 14, 2026",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel aliquam aliquet, nisl nisl aliquet nisl, vel aliquet nisl nisl vel aliquet.",
+    date: "23, Mar 2026",
     time: "10:00 AM - 12:00 PM",
-    facilitator: "Dr. Emma Reyes",
+    facilitator: "Dr.Tafadzwa Usai",
     format: "In-person" as const,
-    location: "Room 302, Main Campus",
-    category: "Mindfulness",
+    location: "TBA",
+    category: "Fitness",
     attendees: 24,
     maxAttendees: 30,
     status: "upcoming" as const,
   },
   {
     id: 2,
-    title: "Stress Management Techniques",
+    title: "Hybrid Games",
     description:
-      "Practical tools for identifying stress triggers and developing personalized coping strategies for the workplace.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel aliquam aliquet, nisl nisl aliquet nisl, vel aliquet nisl nisl vel aliquet.",
     date: "Feb 18, 2026",
     time: "2:00 PM - 3:30 PM",
-    facilitator: "Mark Sullivan",
+    facilitator: "Tyler The Creator",
     format: "Online" as const,
     location: "Zoom",
     category: "Stress",
@@ -109,26 +109,26 @@ const workshops = [
     maxAttendees: 30,
     status: "past" as const,
   },
-]
+];
 
 const categoryColors: Record<string, string> = {
   Mindfulness: "bg-primary/10 text-primary",
   Stress: "bg-warning/10 text-warning-foreground",
   Productivity: "bg-accent/10 text-accent",
   Burnout: "bg-destructive/10 text-destructive",
-}
+};
 
 export default function WorkshopsPage() {
-  const [registered, setRegistered] = useState<number[]>([])
+  const [registered, setRegistered] = useState<number[]>([]);
 
-  const upcomingWorkshops = workshops.filter((w) => w.status === "upcoming")
-  const pastWorkshops = workshops.filter((w) => w.status === "past")
+  const upcomingWorkshops = workshops.filter((w) => w.status === "upcoming");
+  const pastWorkshops = workshops.filter((w) => w.status === "past");
 
   const handleRegister = (id: number) => {
     setRegistered((prev) =>
-      prev.includes(id) ? prev.filter((r) => r !== id) : [...prev, id]
-    )
-  }
+      prev.includes(id) ? prev.filter((r) => r !== id) : [...prev, id],
+    );
+  };
 
   return (
     <AppShell>
@@ -153,8 +153,8 @@ export default function WorkshopsPage() {
           <TabsContent value="upcoming" className="mt-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {upcomingWorkshops.map((workshop) => {
-                const isRegistered = registered.includes(workshop.id)
-                const spotsLeft = workshop.maxAttendees - workshop.attendees
+                const isRegistered = registered.includes(workshop.id);
+                const spotsLeft = workshop.maxAttendees - workshop.attendees;
                 return (
                   <Card
                     key={workshop.id}
@@ -168,12 +168,15 @@ export default function WorkshopsPage() {
                               variant="secondary"
                               className={cn(
                                 "text-xs",
-                                categoryColors[workshop.category]
+                                categoryColors[workshop.category],
                               )}
                             >
                               {workshop.category}
                             </Badge>
-                            <Badge variant="secondary" className="text-xs gap-1">
+                            <Badge
+                              variant="secondary"
+                              className="text-xs gap-1"
+                            >
                               {workshop.format === "Online" ? (
                                 <Monitor className="w-3 h-3" />
                               ) : (
@@ -207,7 +210,8 @@ export default function WorkshopsPage() {
                         </div>
                         <div className="flex items-center gap-2 text-xs text-muted-foreground">
                           <Users className="w-3.5 h-3.5 shrink-0" />
-                          {workshop.attendees}/{workshop.maxAttendees} registered
+                          {workshop.attendees}/{workshop.maxAttendees}{" "}
+                          registered
                           {spotsLeft <= 5 && (
                             <span className="text-warning font-medium">
                               ({spotsLeft} spots left)
@@ -223,7 +227,7 @@ export default function WorkshopsPage() {
                             "flex-1 text-sm",
                             isRegistered
                               ? "bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20"
-                              : "bg-primary text-primary-foreground hover:bg-primary/90"
+                              : "bg-primary text-primary-foreground hover:bg-primary/90",
                           )}
                           variant={isRegistered ? "outline" : "default"}
                           size="sm"
@@ -248,7 +252,7 @@ export default function WorkshopsPage() {
                       </div>
                     </CardContent>
                   </Card>
-                )
+                );
               })}
             </div>
           </TabsContent>
@@ -266,7 +270,7 @@ export default function WorkshopsPage() {
                         variant="secondary"
                         className={cn(
                           "text-xs",
-                          categoryColors[workshop.category]
+                          categoryColors[workshop.category],
                         )}
                       >
                         {workshop.category}
@@ -299,5 +303,5 @@ export default function WorkshopsPage() {
         </Tabs>
       </div>
     </AppShell>
-  )
+  );
 }

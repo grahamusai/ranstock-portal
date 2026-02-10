@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { usePathname } from "next/navigation"
-import { Bell, Search, Menu, Leaf } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { usePathname } from "next/navigation";
+import { Bell, Search, Menu, Leaf } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const pageTitles: Record<string, string> = {
   "/": "HR Dashboard",
@@ -11,15 +11,15 @@ const pageTitles: Record<string, string> = {
   "/workshops": "Workshops & Events",
   "/resources": "Resources Library",
   "/reports": "Reports & Insights",
-}
+};
 
 interface AppHeaderProps {
-  onMenuToggle?: () => void
+  onMenuToggle?: () => void;
 }
 
 export function AppHeader({ onMenuToggle }: AppHeaderProps) {
-  const pathname = usePathname()
-  const title = pageTitles[pathname] || "Dashboard"
+  const pathname = usePathname();
+  const title = pageTitles[pathname] || "Dashboard";
 
   return (
     <header className="flex items-center justify-between px-4 lg:px-8 h-16 border-b border-border bg-card">
@@ -37,7 +37,9 @@ export function AppHeader({ onMenuToggle }: AppHeaderProps) {
           <div className="flex items-center justify-center w-7 h-7 rounded-md bg-primary">
             <Leaf className="w-4 h-4 text-primary-foreground" />
           </div>
-          <span className="text-sm font-semibold text-foreground">Wellspring</span>
+          <span className="text-sm font-semibold text-foreground">
+            Wellspring
+          </span>
         </div>
         <h2 className="hidden lg:block text-lg font-semibold text-foreground">
           {title}
@@ -70,12 +72,14 @@ export function AppHeader({ onMenuToggle }: AppHeaderProps) {
           </div>
           <div className="hidden md:block">
             <p className="text-sm font-medium text-foreground leading-none">
-              Sarah Chen
+              Graham Usai
             </p>
-            <p className="text-xs text-muted-foreground mt-0.5">HR Manager</p>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              Software Developer
+            </p>
           </div>
         </div>
       </div>
     </header>
-  )
+  );
 }
