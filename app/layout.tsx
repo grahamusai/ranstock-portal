@@ -1,25 +1,25 @@
-import React from "react"
-import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
+import React from "react";
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 
-import "./globals.css"
+import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Wellspring - Corporate Wellness Platform",
+  title: "Ranstock - Corporate Wellness Platform",
   description:
     "Empower your team with data-driven wellness programs. Track engagement, run workshops, and build a healthier workplace culture.",
-}
+};
 
 export const viewport: Viewport = {
   themeColor: "#3a8a5c",
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -27,5 +27,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  )
+  );
 }
